@@ -1,0 +1,9 @@
+.icon {
+    height: 20px;
+    width: 20px;
+}
+
+.border {
+    border: 10px solid black ;
+    background-color: silver;
+}
