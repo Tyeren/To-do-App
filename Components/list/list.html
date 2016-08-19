@@ -1,8 +1,8 @@
 <div ng-show="!$ctrl.selectedList">
-    <div>
-        <button ng-click="$ctrl.addItem($ctrl.itemToAdd)">Add New List</button>
-        <input type="text" ng-model="$ctrl.itemToAdd">
-    </div>
+    <form name="validation" ng-submit="$ctrl.addItem($ctrl.itemToAdd);">
+        <button ng-disabled="validation.listInput.$invalid" type="submit">Add New List</button>
+        <input name="listInput" required type="text" ng-model="$ctrl.itemToAdd">
+    </form>
     <div class="border">
         <table>
             <tr ng-repeat="listItems in $ctrl.listItems ">
@@ -10,7 +10,7 @@
                     <img ng-click="$ctrl.markComplete(listItems)" class="icon" ng-src="{{listItems.icon}}">
                 </td>
                 <td>
-                    <span style="cursor: pointer" ng-click="$ctrl.selectList(listItems)">{{ listItems.name }}</span>
+                    <span style="cursor: pointer" ng-click="$ctrl.selectList(listItems)">{{ listItems.name | custom }}</span>
                 </td>
                 <td>
                 <button ng-click="$ctrl.remove(listItems)"><img src="images/delete.png" class="icon"></button>

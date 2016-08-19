@@ -6,17 +6,17 @@
             <img ng-click="$ctrl.markComplete(task)" class="icon" ng-src="{{task.icon}}">
         </td>
         <td>
-            <span>{{ task.name }}</span>
+            <span>{{ task.name | custom }}</span>
         </td>
         <td>
             <button ng-click="$ctrl.remove($ctrl.selectedList, task)"><img src="images/delete.png" class="icon"></button>
         </td>
     </div>
 
-    <div>
-        <button ng-click="$ctrl.addItem($ctrl.selectedList, $ctrl.itemToAdd)">Add New Task</button>
-        <input type="text" ng-model="$ctrl.itemToAdd">
-    </div>
+    <form name="validation" ng-submit="$ctrl.addItem($ctrl.selectedList, $ctrl.itemToAdd)">
+        <button type="submit" ng-disabled="validation.taskInput.$invalid">Add New Task</button>
+        <input name="taskInput" required type="text" ng-model="$ctrl.itemToAdd">
+    </form>
     <button ng-click="$ctrl.goBack()"> Go Back</button>
     <button ng-click="$ctrl.deleteCompleted($ctrl.selectedList)"> Clear all Completed Tasks</button>
 

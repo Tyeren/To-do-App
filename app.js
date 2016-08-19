@@ -1,5 +1,5 @@
 (function () {
-    angular.module('myApp', ['ui.router', 'ngStorage'])
+    angular.module('myApp', ['ui.router', 'ngStorage', 'ngMaterial', 'ngAnimate'])
         .config(function ($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/list');
             

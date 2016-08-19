@@ -6,7 +6,7 @@
             controller: listController
         });
 
-    function listController(listService) {
+    function listController(listService, toastService) {
         // put all code for this component in here (click handlers, component setup, UI-related code)
         var self = this;
 
@@ -21,7 +21,9 @@
         };
 
         self.addItem = function (itemToAdd) {
-            listService.addItem(itemToAdd)
+            listService.addItem(itemToAdd);
+            toastService.showSimpleToast(itemToAdd);
+            self.itemToAdd = "";
         };
         
         self.remove = function (listItems) {

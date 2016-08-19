@@ -9,7 +9,7 @@
             }
         });
 
-    function taskController(listService) {
+    function taskController(listService, toastService) {
         // put all code for this component in here (click handlers, component setup, UI-related code)
         var self = this;
 
@@ -24,7 +24,9 @@
         };
 
         self.addItem = function (listItem, taskToAdd) {
-            listService.addItem(listItem, taskToAdd)
+            listService.addItem(listItem, taskToAdd);
+            toastService.showSimpleToast(taskToAdd);
+            self.itemToAdd = "";
         };
         
         self.remove = function (listItem, taskItem) {
@@ -37,9 +39,7 @@
         
         self.deleteCompleted = function (listItem) {
            self.listItems =  listService.deleteCompleted(listItem);
-        }
-
-
+        };
     }
 
 })();

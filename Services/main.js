@@ -1,31 +1,40 @@
 (function () {
     angular.module('myApp')
-        .service('listService', function () {
+        .service('listService', function ($localStorage) {
 
             var self = this;
+            var listItems = [];
 
-            self.listItems = [
-                {
-                    name: "List 1",
-                    icon: 'images/X.png',
-                    completed: false,
-                    taskList: []
-                },
-                {
-                    name: "List 2",
-                    icon: 'images/X.png',
-                    completed: false,
-                    taskList: []
-                }
-            ];
+            if ($localStorage.listItems){
+                listItems = $localStorage.listItems;
+            }
+            else if (!$localStorage.listItems){
+                listItems = [
+                    {
+                        name: "List 1",
+                        icon: 'images/X.png',
+                        completed: false,
+                        taskList: []
+                    },
+                    {
+                        name: "List 2",
+                        icon: 'images/X.png',
+                        completed: false,
+                        taskList: []
+                    }
+                ];
+                $localStorage.listItems = listItems;
+            }
+
+
 
             self.getLists = function () {
-                return self.listItems;
+                return listItems;
             };
 
             self.addItem = function (listItem, taskToAdd) {
                 if (!taskToAdd) {
-                    self.listItems.push(
+                    listItems.push(
                         {
                             name: listItem,
                             icon: 'images/X.png',
@@ -59,8 +68,8 @@
 
             self.remove = function (listItem , taskItem) {
                 if (!taskItem) {
-                    var index = self.listItems.indexOf(listItem);
-                    self.listItems.splice(index, 1);
+                    var index = listItems.indexOf(listItem);
+                    listItems.splice(index, 1);
                 }
 
                 else {
@@ -83,14 +92,14 @@
                     }
                 }
                 else {
-                    for(i = 0; i < self.listItems.length; i++) {
-                        if(self.listItems[i].completed) {
-                            newArray.push(self.listItems[i]);
+                    for(i = 0; i < listItems.length; i++) {
+                        if(listItems[i].completed) {
+                            newArray.push(listItems[i]);
                         }
                     }
                    for (i = 0; i < newArray.length; i++) {
-                       index = self.listItems.indexOf(newArray[i]);
-                       self.listItems.splice(index, 1);
+                       index = listItems.indexOf(newArray[i]);
+                       listItems.splice(index, 1);
                    }
                 }
             }

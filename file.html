@@ -6,16 +6,29 @@
     <link rel="stylesheet" href="Stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.js"></script>
+
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.9/angular-material.min.js"></script>
+
+
 </head>
 <body>
 <a ui-sref = 'list'>List</a>
 <a ui-sref = 'about'>About</a>
-<ui-view></ui-view>
+<div ui-view class="animation"></div>
+
 
 <script src="app.js"></script>
-<script src="main.js"></script>
+<script src="Services/main.js"></script>
+<script src="Services/toastService.js"></script>
+<script src="filters/customFilter.js"></script>
 <script src="Components/list/list.js"></script>
 <script src="Components/about/about.js"></script>
 <script src="Components/task/task.js"></script>
+</body>
 </html>

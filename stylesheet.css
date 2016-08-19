@@ -1,9 +1,34 @@
-.icon {
-    height: 20px;
-    width: 20px;
+@keyframes enter {
+    from { top: 5%; left: -100%;}
+    to { top: 5%; left: 5%;}
+}
+
+@keyframes leave {
+    from {top: 5%; left: 0; }
+    to {top: 5%; left: 105%}
+
+}
+
+.animation.ng-enter {
+    width: 75%;
+    position: absolute;
+    animation: enter 2s linear;
+    -webkit-animation: enter 2s linear;
+}
+
+.animation.ng-leave {
+    width: 75%;
+    position: absolute;
+    animation: leave 2s linear;
+    -webkit-animation: leave 2s linear;
 }
 
 .border {
     border: 10px solid black ;
     background-color: silver;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
 }
